@@ -1,0 +1,37 @@
+<?php
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\PolizaController;
+use App\Http\Controllers\AccidenteController;
+use App\Http\Controllers\MunicipioController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return redirect()->route('dashboard');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // Personas CRUD
+    Route::resource('personas', PersonaController::class);
+    
+    // Vehículos CRUD
+    Route::resource('vehiculos', VehiculoController::class);
+    
+    // Pólizas CRUD
+    Route::resource('polizas', PolizaController::class);
+    
+    // Accidentes CRUD
+    Route::resource('accidentes', AccidenteController::class);
+    
+    // Municipios CRUD
+    Route::resource('municipios', MunicipioController::class);
+    
+    // Consultas especiales
+    Route::get('/consultas/persona-poliza', [ConsultaController::class, 'personaPoliza'])->name('consultas.persona-poliza');
+});
+
+require __DIR__.'/auth.php';
