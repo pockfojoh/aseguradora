@@ -32,6 +32,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     // Consultas especiales
     Route::get('/consultas/persona-poliza', [ConsultaController::class, 'personaPoliza'])->name('consultas.persona-poliza');
+
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/consultas', [ConsultaController::class, 'index'])->name('consultas.index');
+        Route::get('/consultas/estadisticas', [ConsultaController::class, 'estadisticas'])->name('consultas.estadisticas');
+    });
 });
 
 require __DIR__.'/auth.php';

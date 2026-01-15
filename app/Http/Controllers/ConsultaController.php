@@ -159,4 +159,44 @@ class ConsultaController extends Controller
 
         return view('consultas.reporte-persona', compact('persona', 'estadisticas', 'accidentesPorMes'));
     }
+
+
+
+    /**
+     * Panel de consultas generales
+     */
+    public function index()
+    {
+        return view('consultas.index');
+    }
+
+    /**
+     * Estadísticas básicas
+     */
+    public function estadisticas()
+    {
+        $totalPolizas = Poliza::count();
+        $polizasActivas = Poliza::where('estado', 'activa')->count();
+        $totalAccidentes = Accidente::count();
+
+        $accidentesPorMunicipio = Accidente::with('municipio')
+            ->selectRaw('municipio_id, COUNT(*) as total')
+            ->groupBy('municipio_id')
+            ->get();
+
+        $accidentesPorHora = Accidente::selectRaw('HOUR(hora_accidente) as hora, COUNT(*) as total')
+            ->groupBy('hora')
+            ->orderBy('hora')
+            ->get();
+
+        return view('consultas.estadisticas', compact(
+            'totalPolizas',
+            'polizasActivas',
+            'totalAccidentes',
+            'accidentesPorMunicipio',
+            'accidentesPorHora'
+        ));
+    }
+
+
 }
