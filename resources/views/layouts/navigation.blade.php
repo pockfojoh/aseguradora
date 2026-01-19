@@ -15,6 +15,24 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
+                        {{ __('Personas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('vehiculos.index')" :active="request()->routeIs('vehiculos.*')">
+                        {{ __('Vehiculos') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('polizas.index')" :active="request()->routeIs('polizas.*')">
+                        {{ __('Polizas') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('accidentes.index')" :active="request()->routeIs('accidentes.*')">
+                        {{ __('Accidentes') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('municipios.index')" :active="request()->routeIs('municipios.*')">
+                        {{ __('Municipios') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('consultas.index')" :active="request()->routeIs('consultas.*')">
+                        {{ __('Consultas') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -66,6 +84,24 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('personas.index')" :active="request()->routeIs('personas.*')">
+                {{ __('Personas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('vehiculos.index')" :active="request()->routeIs('vehiculos.*')">
+                {{ __('Vehiculos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('polizas.index')" :active="request()->routeIs('polizas.*')">
+                {{ __('Polizas') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('accidentes.index')" :active="request()->routeIs('accidentes.*')">
+                {{ __('Accidentes') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('municipios.index')" :active="request()->routeIs('municipios.*')">
+                {{ __('Municipios') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('consultas.index')" :active="request()->routeIs('consultas.*')">
+                {{ __('Consultas') }}
             </x-responsive-nav-link>
         </div>
 

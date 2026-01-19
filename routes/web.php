@@ -6,6 +6,7 @@ use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\PolizaController;
 use App\Http\Controllers\AccidenteController;
 use App\Http\Controllers\MunicipioController;
+use App\Http\Controllers\ConsultaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {

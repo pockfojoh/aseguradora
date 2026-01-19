@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Poliza;
+use App\Models\Persona;
+use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 
 class PolizaController extends Controller
@@ -24,7 +26,10 @@ class PolizaController extends Controller
      */
     public function create()
     {
-        return view('polizas.create');
+        $personas = Persona::orderBy('nombre')->get();
+        $vehiculos = Vehiculo::orderBy('marca')->get();
+
+        return view('polizas.create', compact('personas', 'vehiculos'));
     }
 
     /**
@@ -66,7 +71,10 @@ class PolizaController extends Controller
      */
     public function edit(Poliza $poliza)
     {
-        return view('polizas.edit', compact('poliza'));
+        $personas = Persona::orderBy('nombre')->get();
+        $vehiculos = Vehiculo::orderBy('marca')->get();
+
+        return view('polizas.edit', compact('poliza', 'personas', 'vehiculos'));
     }
 
     /**
@@ -75,6 +83,10 @@ class PolizaController extends Controller
     public function update(Request $request, Poliza $poliza)
     {
         $validated = $request->validate([
+            'persona_id'        => 'required|exists:personas,id',
+            'vehiculo_id'       => 'required|exists:vehiculos,id',
+            'numero_poliza'     => 'required|unique:polizas,numero_poliza,' . $poliza->id,
+            'fecha_compra'      => 'required|date',
             'fecha_vencimiento' => 'required|date|after:fecha_compra',
             'monto_cobertura'   => 'required|numeric|min:0',
             'prima_mensual'     => 'required|numeric|min:0',

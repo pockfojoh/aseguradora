@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accidente;
 use App\Models\Persona;
 use App\Models\Poliza;
 use Illuminate\Http\Request;
