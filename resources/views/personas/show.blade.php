@@ -118,7 +118,7 @@
                                             </span>
                                         </td>
                                         <td class="border px-4 py-2">
-                                            {{ $poliza->fecha_inicio->format('d/m/Y') }} - {{ $poliza->fecha_vencimiento->format('d/m/Y') }}
+                                            {{ $poliza->fecha_compra->format('d/m/Y') }} - {{ $poliza->fecha_vencimiento->format('d/m/Y') }}
                                         </td>
                                         <td class="border px-4 py-2 text-center">
                                             <a href="{{ route('polizas.show', $poliza) }}"

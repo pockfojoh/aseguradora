@@ -42,7 +42,10 @@ class MunicipioController extends Controller
         }]);
         $municipio->loadCount('accidentes');
 
-        return view('municipios.show', compact('municipio'));
+        $totalAccidentes = $municipio->accidentes_count;
+        $accidentes = $municipio->accidentes;
+
+        return view('municipios.show', compact('municipio', 'totalAccidentes', 'accidentes'));
     }
 
     public function edit(Municipio $municipio)

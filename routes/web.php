@@ -33,6 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     // Consultas especiales
     Route::get('/consultas/persona-poliza', [ConsultaController::class, 'personaPoliza'])->name('consultas.persona-poliza');
+    Route::get('/consultas/exportar', [ConsultaController::class, 'exportarConsulta'])->name('consultas.exportar');
 
 
     Route::middleware(['auth'])->group(function () {

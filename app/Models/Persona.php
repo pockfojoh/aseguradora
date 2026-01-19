@@ -19,6 +19,10 @@ class Persona extends Model
         'fecha_nacimiento',
     ];
 
+    protected $casts = [
+        'fecha_nacimiento' => 'date',
+    ];
+
     public function vehiculos(): HasMany
     {
         return $this->hasMany(Vehiculo::class);
